@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Premi — Women's Day 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush:    #F2C4CE;
+  --rose:     #D4849A;
+  --petal:    #F7DDE2;
+  --mauve:    #B57A8A;
+  --wine:     #7D3550;
+  --cream:    #FDF6F0;
+  --fog:      #EEE5E9;
+  --dust:     #C9A8B4;
+  --midnight: #1C0E17;
+  --ink:      #2D1A22;
+  --gold:     #E8C9A0;
+  --ivory:    #FBF5EE;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CURSOR */
+.cur { position:fixed; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
+#cur1 {
+  width:8px; height:8px;
+  background: var(--wine);
+  border-radius:50%;
+  box-shadow: 0 0 10px rgba(125,53,80,.5);
+  transition: transform .15s ease;
+}
+#cur2 {
+  width:32px; height:32px;
+  border:1.5px solid rgba(212,132,154,.5);
+  border-radius:50%;
+  transition: left .11s ease, top .11s ease, width .3s, height .3s, border-color .3s, background .3s;
+}
+#cur2.hovering {
+  width:46px; height:46px;
+  border-color: var(--rose);
+  background: rgba(212,132,154,.07);
+}
+
+/* PETAL CANVAS */
+#petalCanvas { position:fixed; inset:0; pointer-events:none; z-index:1; }
+
+/* NOISE */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:0; opacity:.5;
+}
+
+/* ====== HERO ====== */
+#hero {
+  position:relative;
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  overflow:hidden;
+  background: radial-gradient(ellipse at 30% 40%, #f9dde5 0%, transparent 60%),
+              radial-gradient(ellipse at 75% 70%, #eedfe8 0%, transparent 55%),
+              var(--cream);
+  z-index:2;
+}
+
+/* Soft orbs */
+.orb {
+  position:absolute; border-radius:50%;
+  filter: blur(70px); pointer-events:none;
+  animation: breathe var(--bd, 7s) ease-in-out infinite alternate var(--bdelay,0s);
+}
+@keyframes breathe {
+  from { transform: scale(1) translate(0,0); opacity:.45; }
+  to   { transform: scale(1.18) translate(12px,-18px); opacity:.9; }
+}
+
+.hero-deco-line {
+  position:absolute; width:1px; height:35vh;
+  background:linear-gradient(to bottom, transparent, var(--blush), transparent);
+  left:12%; top:50%; transform:translateY(-50%); opacity:.35;
+}
+.hero-deco-line2 {
+  position:absolute; width:1px; height:20vh;
+  background:linear-gradient(to bottom, transparent, var(--dust), transparent);
+  right:10%; top:28%; opacity:.25;
+}
+
+.hero-eyebrow {
+  font-family:'Lato',sans-serif; font-weight:300;
+  font-size:.65rem; letter-spacing:.5em; text-transform:uppercase;
+  color:var(--mauve); opacity:0; animation:fadeUp .9s forwards .6s;
+  position:relative; z-index:5;
+}
+
+.hero-name {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(5rem, 18vw, 14rem); font-weight:300; font-style:italic;
+  line-height:.9; color:var(--wine); opacity:0; animation:fadeUp 1.2s forwards 1s;
+  position:relative; z-index:5; text-shadow:0 8px 60px rgba(125,53,80,.15);
+  letter-spacing:-.02em; cursor:none;
+}
+
+.hero-sub {
+  font-family:'Cormorant Garamond', serif; font-size:clamp(1rem, 2.5vw, 1.5rem);
+  font-weight:300; color:var(--mauve); margin-top:1.2rem;
+  opacity:0; animation:fadeUp .9s forwards 1.5s;
+  position:relative; z-index:5; letter-spacing:.08em;
+}
+
+.hero-msg {
+  margin-top:2.5rem; font-family:'Cormorant Garamond', serif; font-style:italic;
+  font-size:clamp(.95rem,1.8vw,1.25rem); color:var(--rose); max-width:480px;
+  text-align:center; line-height:1.8; opacity:0; animation:fadeUp .9s forwards 2s;
+  position:relative; z-index:5;
+}
+
+.hero-heartline {
+  opacity:0; animation:fadeUp .8s forwards 2.4s;
+  position:relative; z-index:5; margin-top:1.8rem;
+  display:flex; align-items:center; gap:.8rem;
+}
+.hero-heartline span {
+  width:50px; height:1px; background:linear-gradient(to right, transparent, var(--blush));
+  display:block;
+}
+.hero-heartline span:last-child { background:linear-gradient(to left, transparent, var(--blush)); }
+.hero-heartline em { font-size:.75rem; color:var(--rose); font-style:normal; animation:heartbeat 1.5s ease-in-out infinite; }
+
+.scroll-hint {
+  position:absolute; bottom:2.5rem; font-size:.58rem; letter-spacing:.3em;
+  color:var(--dust); text-transform:uppercase;
+  opacity:0; animation:fadeUp .8s forwards 2.8s, bob 2s ease-in-out infinite 3.5s;
+  z-index:5; display:flex; flex-direction:column; align-items:center; gap:.5rem;
+}
+.scroll-hint::after {
+  content:''; width:1px; height:28px;
+  background:linear-gradient(to bottom, var(--blush), transparent); display:block;
+}
+@keyframes bob { 0%,100%{transform:translateY(0)}50%{transform:translateY(8px)} }
+
+/* ====== RIBBON ====== */
+.ribbon {
+  background:var(--wine);
+  color:var(--petal);
+  font-size:.62rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  padding:.85rem 0;
+  overflow:hidden;
+  position:relative; z-index:2;
+}
+.ribbon-track {
+  display:flex; white-space:nowrap;
+  animation: slide 22s linear infinite;
+}
+.ribbon-item { padding:0 2.5rem; }
+.ribbon-item::after { content:'·'; padding-left:2.5rem; opacity:.5; }
+@keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ====== LETTER SECTION ====== */
+#letter {
+  max-width:760px; margin:0 auto;
+  padding:9rem 3rem;
+  position:relative; z-index:2;
+}
+
+#letter::before {
+  content:'"';
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  font-size:20rem; line-height:1;
+  color:var(--blush); opacity:.12;
+  top:-2rem; left:-1rem;
+  pointer-events:none;
+}
+
+.letter-label {
+  font-size:.6rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--dust); margin-bottom:2rem;
+  display:flex; align-items:center; gap:1rem;
+}
+.letter-label::before {
+  content:''; display:block; width:30px; height:1px;
+  background:var(--blush);
+}
+
+.letter-body {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,2.2vw,1.55rem);
+  line-height:1.95; color:var(--ink); font-weight:300;
+}
+
+.letter-body em { color:var(--wine); font-style:italic; }
+.letter-body strong { color:var(--mauve); font-weight:400; }
+
+.letter-sig {
+  margin-top:3rem;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic; font-size:1.4rem; color:var(--rose);
+  display:flex; align-items:center; gap:1rem;
+}
+.letter-sig::before {
+  content:''; display:block; width:40px; height:1px;
+  background:linear-gradient(to right, var(--blush), transparent);
+}
+
+/* ====== 4D PETALS UNIVERSE ====== */
+#universe {
+  position:relative;
+  height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  overflow:hidden;
+  background: radial-gradient(ellipse at center, #1C0E17 0%, #0e0810 100%);
+  z-index:2;
+}
+#universeCanvas { position:absolute; inset:0; width:100%; height:100%; }
+
+.universe-text {
+  position:relative; z-index:5;
+  text-align:center; pointer-events:none;
+}
+.universe-text h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,4.5rem);
+  font-weight:300; font-style:italic;
+  color:var(--petal);
+  line-height:1.2;
+}
+.universe-text p {
+  font-size:.6rem; letter-spacing:.35em;
+  color:var(--dust); text-transform:uppercase;
+  margin-top:1rem;
+}
+
+/* ====== QUALITIES ====== */
+#qualities {
+  padding:9rem 4rem;
+  max-width:1300px; margin:0 auto;
+  position:relative; z-index:2;
+}
+
+.qualities-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  margin-top:5rem;
+}
+
+.q-card {
+  padding:3.5rem 2.5rem;
+  background:var(--ivory);
+  border:1px solid rgba(180,120,138,.12);
+  position:relative; overflow:hidden;
+  cursor:default;
+  transition:all .5s cubic-bezier(.25,.46,.45,.94);
+  transform-style:preserve-3d;
+}
+.q-card::before {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, var(--blush), var(--petal));
+  opacity:0; transition:opacity .5s;
+}
+.q-card:hover { transform:perspective(600px) rotateX(-4deg) rotateY(4deg) translateY(-8px); border-color:var(--dust); }
+.q-card:hover::before { opacity:.25; }
+
+.q-symbol {
+  font-size:2.2rem; display:block;
+  margin-bottom:1.5rem; position:relative; z-index:1;
+  transition:transform .4s;
+}
+.q-card:hover .q-symbol { transform:scale(1.2) rotate(-5deg); }
+
+.q-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem; font-weight:400; font-style:italic;
+  color:var(--wine);
+  position:relative; z-index:1;
+}
+.q-desc {
+  margin-top:1rem;
+  font-size:.85rem; line-height:1.75;
+  color:var(--mauve);
+  position:relative; z-index:1;
+}
+
+/* ====== ANONYMOUS SECTION ====== */
+#anon {
+  padding:9rem 4rem;
+  background: linear-gradient(160deg, #1C0E17 0%, #2d1520 100%);
+  position:relative; z-index:2; overflow:hidden;
+}
+
+#anon::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(212,132,154,.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 30%, rgba(181,122,138,.08) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+.anon-inner {
+  max-width:800px; margin:0 auto;
+  position:relative; z-index:2;
+}
+
+.anon-badge {
+  display:inline-flex; align-items:center; gap:.6rem;
+  background:rgba(212,132,154,.1);
+  border:1px solid rgba(212,132,154,.2);
+  padding:.4rem 1rem;
+  border-radius:2rem;
+  font-size:.6rem; letter-spacing:.25em; text-transform:uppercase;
+  color:var(--blush);
+  margin-bottom:2.5rem;
+}
+.anon-dot { width:6px; height:6px; background:#5CDB95; border-radius:50%; animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+
+.anon-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4.5vw,3.8rem);
+  font-weight:300; font-style:italic;
+  color:var(--petal);
+  line-height:1.15;
+  margin-bottom:1rem;
+}
+
+.anon-note {
+  font-size:.8rem; line-height:1.9;
+  color:rgba(242,196,206,.5);
+  margin-bottom:3rem;
+  max-width:560px;
+}
+
+/* Category pills */
+.anon-cats {
+  display:flex; flex-wrap:wrap; gap:.7rem;
+  margin-bottom:2rem;
+}
+.cat-pill {
+  padding:.45rem 1.2rem;
+  border:1px solid rgba(212,132,154,.25);
+  color:var(--dust);
+  font-size:.65rem; letter-spacing:.15em; text-transform:uppercase;
+  cursor:pointer; transition:all .3s;
+  border-radius:2rem;
+  background:transparent;
+}
+.cat-pill.active, .cat-pill:hover {
+  background:rgba(212,132,154,.15);
+  border-color:var(--blush);
+  color:var(--blush);
+}
+
+.anon-textarea {
+  width:100%;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,132,154,.2);
+  border-radius:4px;
+  color:var(--petal);
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.1rem;
+  padding:1.5rem;
+  resize:none;
+  outline:none;
+  transition:border-color .3s;
+  line-height:1.8;
+}
+.anon-textarea:focus { border-color:rgba(212,132,154,.6); }
+.anon-textarea::placeholder { color:rgba(242,196,206,.25); }
+
+.anon-footer-row {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-top:1rem; flex-wrap:wrap; gap:1rem;
+}
+
+.anon-privacy {
+  font-size:.62rem; letter-spacing:.12em;
+  color:rgba(212,132,154,.4);
+  display:flex; align-items:center; gap:.4rem;
+}
+.anon-privacy::before { content:'🔒'; font-size:.8rem; }
+
+.anon-btn {
+  background:linear-gradient(135deg, var(--wine), var(--mauve));
+  color:var(--petal);
+  border:none;
+  padding:.9rem 2.5rem;
+  font-family:'Lato',sans-serif;
+  font-size:.65rem; letter-spacing:.25em; text-transform:uppercase;
+  cursor:pointer;
+  transition:all .3s;
+  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.anon-btn:hover { transform:translateY(-3px); box-shadow:0 20px 50px rgba(125,53,80,.4); }
+
+.wall-empty {
+  padding:3rem 2rem;
+  text-align:center;
+  border:1px dashed rgba(212,132,154,.15);
+  border-radius:2px;
+}
+.wall-empty span { font-size:1.8rem; display:block; margin-bottom:1rem; opacity:.4; }
+.wall-empty p {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:1rem; color:rgba(212,132,154,.3); line-height:1.8;
+}
+
+/* Reports wall */
+.reports-wall {
+  margin-top:3.5rem;
+  display:flex; flex-direction:column; gap:12px;
+}
+
+.report-card {
+  padding:2rem 2.2rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,132,154,.12);
+  border-radius:2px;
+  animation:slideIn .5s ease forwards;
+  position:relative; overflow:hidden;
+  transition: border-color .3s;
+}
+.report-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(to right, transparent, rgba(212,132,154,.4), transparent);
+}
+.report-card:hover { border-color:rgba(212,132,154,.3); }
+@keyframes slideIn { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+
+.report-meta {
+  display:flex; align-items:center; gap:.8rem;
+  margin-bottom:1rem; flex-wrap:wrap;
+}
+.report-anon {
+  font-size:.55rem; letter-spacing:.25em; text-transform:uppercase;
+  color:rgba(212,132,154,.35);
+  display:flex; align-items:center; gap:.35rem;
+}
+.report-anon::before { content:''; width:5px; height:5px; background:rgba(92,219,149,.5); border-radius:50%; display:block; }
+.report-cat-badge {
+  font-size:.55rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:.25rem .8rem;
+  background:rgba(212,132,154,.07);
+  border:1px solid rgba(212,132,154,.18);
+  border-radius:2rem;
+  color:var(--dust);
+}
+.report-time {
+  font-size:.52rem; color:rgba(212,132,154,.22);
+  margin-left:auto;
+}
+
+.report-text {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:1.1rem; color:rgba(242,196,206,.78); line-height:1.85;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  padding:5rem 4rem 3rem;
+  text-align:center;
+  background:var(--cream);
+  position:relative; z-index:2;
+  border-top:1px solid rgba(180,120,138,.12);
+}
+.footer-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,10vw,8rem);
+  font-style:italic; font-weight:300;
+  color:var(--wine);
+  opacity:.08;
+  line-height:1;
+  margin-bottom:-1rem;
+}
+.footer-heart {
+  font-size:1.5rem; color:var(--rose);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+
+.footer-text {
+  font-size:.6rem; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--dust); margin-top:1rem;
+}
+
+/* ====== SOFT 3D RINGS (hero) ====== */
+.ring-wrap {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  pointer-events:none; z-index:3;
+  perspective: 1000px;
+}
+.s-ring {
+  position:absolute;
+  border-radius:50%;
+  border:1px solid transparent;
+  background: linear-gradient(var(--cream),var(--cream)) padding-box,
+              linear-gradient(135deg, rgba(212,132,154,.5), rgba(232,201,160,.3), rgba(181,122,138,.4)) border-box;
+  animation: sRingRot var(--rd,10s) linear infinite var(--rdir,normal);
+  transform-style: preserve-3d;
+}
+@keyframes sRingRot {
+  from { transform: rotate3d(1, 0.4, 0.2, 0deg); }
+  to   { transform: rotate3d(1, 0.4, 0.2, 360deg); }
+}
+
+/* ====== MOUSE TRAIL SPARKS ====== */
+.spark {
+  position:fixed; pointer-events:none; z-index:9990;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation: sparkFade .8s ease forwards;
+}
+@keyframes sparkFade {
+  0%   { opacity:.7; transform:translate(-50%,-50%) scale(1); }
+  100% { opacity:0;  transform:translate(-50%,-50%) scale(0) translateY(-20px); }
+}
+
+/* ====== RIPPLE ====== */
+.soft-ripple {
+  position:fixed; pointer-events:none; z-index:9989;
+  border-radius:50%;
+  border:1px solid rgba(212,132,154,.4);
+  transform:translate(-50%,-50%);
+  animation: rippleGrow 1s ease forwards;
+}
+@keyframes rippleGrow {
+  from { width:0; height:0; opacity:.6; }
+  to   { width:180px; height:180px; opacity:0; }
+}
+
+/* ====== CINEMATIC SCROLL LINES ====== */
+.cine-line {
+  position:fixed; top:0; bottom:0; pointer-events:none; z-index:9988;
+  width:1px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(212,132,154,.08) 30%, rgba(212,132,154,.08) 70%, transparent 100%);
+}
+.cine-line.left  { left:5vw; }
+.cine-line.right { right:5vw; }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(35px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.reveal { opacity:0; transform:translateY(40px); transition:all .9s cubic-bezier(.25,.46,.45,.94); }
+.reveal.vis { opacity:1; transform:translateY(0); }
+
+/* Section headings */
+.sec-eyebrow {
+  font-size:.6rem; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--dust); margin-bottom:1rem;
+}
+.sec-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5vw,4rem);
+  font-weight:300; font-style:italic;
+  color:var(--wine); line-height:1.1;
+}
+
+@media(max-width:768px){
+  .qualities-grid{grid-template-columns:1fr;}
+  #qualities,#anon,#letter{padding:5rem 1.8rem;}
+  footer{padding:3rem 1.8rem 2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="cine-line left"></div>
+<div class="cine-line right"></div>
+<div class="cur" id="cur1"></div>
+<div class="cur" id="cur2"></div>
+<canvas id="petalCanvas"></canvas>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+  <!-- Soft 3D rings -->
+  <div class="ring-wrap">
+    <div class="s-ring" style="width:520px;height:520px;--rd:12s;--rdir:normal;"></div>
+    <div class="s-ring" style="width:380px;height:380px;--rd:8s;--rdir:reverse;background:linear-gradient(var(--cream),var(--cream)) padding-box, linear-gradient(45deg,rgba(232,201,160,.4),rgba(247,221,226,.5)) border-box;"></div>
+    <div class="s-ring" style="width:240px;height:240px;--rd:5s;--rdir:normal;background:linear-gradient(var(--cream),var(--cream)) padding-box, linear-gradient(90deg,rgba(181,122,138,.3),rgba(212,132,154,.5)) border-box;"></div>
+  </div>
+  <div class="hero-deco-line"></div>
+  <div class="hero-deco-line2"></div>
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,#f2c4ce,transparent 70%);top:-10%;left:-5%;--bd:8s;--bdelay:0s;opacity:.5;"></div>
+  <div class="orb" style="width:380px;height:380px;background:radial-gradient(circle,#e8d0dc,transparent 70%);bottom:0;right:-5%;--bd:6s;--bdelay:1.5s;opacity:.4;"></div>
+  <div class="orb" style="width:260px;height:260px;background:radial-gradient(circle,#f5d5df,transparent 70%);top:20%;right:15%;--bd:10s;--bdelay:3s;opacity:.3;"></div>
+
+  <p class="hero-eyebrow">March 8, 2026 &nbsp;·&nbsp; International Women's Day</p>
+  <h1 class="hero-name" id="heroName">Premi</h1>
+  <p class="hero-sub">this day was made for you</p>
+  <p class="hero-msg">
+    You are the warmth in every room,<br>
+    the dream that refuses to fade,<br>
+    and the softest kind of <em style="color:var(--wine)">strength</em> I know.
+  </p>
+  <div class="hero-heartline">
+    <span></span><em>🌹</em><span></span>
+  </div>
+  <div class="scroll-hint">scroll gently</div>
+</section>
+
+<!-- RIBBON -->
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span class="ribbon-item">Warmth</span><span class="ribbon-item">Grace</span><span class="ribbon-item">Dreamer</span><span class="ribbon-item">Softness</span><span class="ribbon-item">Bloom</span><span class="ribbon-item">Nurture</span><span class="ribbon-item">Wonder</span><span class="ribbon-item">Light</span><span class="ribbon-item">Warmth</span><span class="ribbon-item">Grace</span><span class="ribbon-item">Dreamer</span><span class="ribbon-item">Softness</span><span class="ribbon-item">Bloom</span><span class="ribbon-item">Nurture</span><span class="ribbon-item">Wonder</span><span class="ribbon-item">Light</span>
+  </div>
+</div>
+
+<!-- LETTER -->
+<section id="letter">
+  <p class="letter-label reveal">A note, just for you</p>
+  <div class="letter-body reveal">
+    <p>Dear <em>Premi</em>,</p><br>
+    <p>In a world that moves too fast and forgets to be gentle — you have always been the rare kind of person who <strong>pauses</strong>, who <em>feels everything deeply</em>, who loves without conditions.</p><br>
+    <p>Your warmth isn't weakness. Your softness isn't fragile. The way you <em>care</em> for everyone around you — that is a kind of <strong>superpower</strong> the world desperately needs more of.</p><br>
+    <p>On this day, and every day, I want you to know: <em>you are seen, you are celebrated, and you are so deeply loved.</em></p>
+  </div>
+  <div class="letter-sig reveal">— with love, always 🌹</div>
+</section>
+
+<!-- 4D UNIVERSE -->
+<section id="universe">
+  <canvas id="universeCanvas"></canvas>
+  <div class="universe-text">
+    <h2>move through<br><span style="color:var(--blush)">her universe</span></h2>
+    <p>touch to bloom · move to drift</p>
+  </div>
+</section>
+
+<!-- QUALITIES -->
+<section id="qualities">
+  <p class="sec-eyebrow reveal">what makes her</p>
+  <h2 class="sec-title reveal">everything she is</h2>
+  <div class="qualities-grid">
+    <div class="q-card reveal">
+      <span class="q-symbol">🌸</span>
+      <div class="q-title">Soft & Warm</div>
+      <div class="q-desc">She makes every space feel like home. Her presence is the kind of warmth that lingers long after she leaves the room.</div>
+    </div>
+    <div class="q-card reveal">
+      <span class="q-symbol">🌙</span>
+      <div class="q-title">Dreamer</div>
+      <div class="q-desc">She carries whole worlds inside her — quiet, beautiful, infinite. Her dreams are the most honest thing about her.</div>
+    </div>
+    <div class="q-card reveal">
+      <span class="q-symbol">🌿</span>
+      <div class="q-title">Nurturer</div>
+      <div class="q-desc">She gives without keeping score. She loves without a limit. And somehow, she still has more to give.</div>
+    </div>
+    <div class="q-card reveal">
+      <span class="q-symbol">✨</span>
+      <div class="q-title">Luminous</div>
+      <div class="q-desc">Even on her quietest days, she glows. Not loudly — but the kind of light that draws people in without trying.</div>
+    </div>
+    <div class="q-card reveal">
+      <span class="q-symbol">🦋</span>
+      <div class="q-title">Ever-Evolving</div>
+      <div class="q-desc">She is always becoming. Growing into herself, gently, at her own pace — and every version is worth knowing.</div>
+    </div>
+    <div class="q-card reveal">
+      <span class="q-symbol">💐</span>
+      <div class="q-title">Deeply Feeling</div>
+      <div class="q-desc">She feels in colors others can't even name. That depth — that sensitivity — is her greatest gift, not her burden.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ANONYMOUS SECTION -->
+<section id="anon">
+  <div class="anon-inner">
+    <div class="anon-badge reveal">
+      <span class="anon-dot"></span>
+      Anonymous & Safe
+    </div>
+
+    <h2 class="anon-title reveal">Your voice matters.<br>No name needed.</h2>
+    <p class="anon-note reveal">
+      This is a private, anonymous space. Share what's on your heart — a struggle, a feeling, something you've been carrying alone. No identity. No judgment. Just a space to breathe and be heard.
+    </p>
+
+    <div class="anon-cats reveal" id="catPills">
+      <button class="cat-pill active" data-cat="feelings">💭 Personal Feelings</button>
+      <button class="cat-pill" data-cat="relationship">🌹 Relationships</button>
+      <button class="cat-pill" data-cat="venting">🌊 Just Venting</button>
+      <button class="cat-pill" data-cat="other">🌸 Something Else</button>
+    </div>
+
+    <textarea class="anon-textarea reveal" id="anonText" rows="5"
+      placeholder="Write freely… this is yours. No one will know it's you."></textarea>
+
+    <div class="anon-footer-row reveal">
+      <span class="anon-privacy">Your identity is never stored or shared.</span>
+      <button class="anon-btn" onclick="submitReport()">Share Anonymously</button>
+    </div>
+
+    <div class="reports-wall" id="reportsWall">
+      <div class="wall-empty">
+        <span>🌸</span>
+        <p>Be the first to share something.<br>This space holds you safely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Premi</div>
+
+  <p class="footer-text">Women's Day 2026 &nbsp;·&nbsp; made with love, just for her</p>
+</footer>
+
+<script>
+// ===== CURSOR =====
+const c1=document.getElementById('cur1'), c2=document.getElementById('cur2');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  c1.style.left=mx+'px'; c1.style.top=my+'px';
+});
+setInterval(()=>{
+  tx+=(mx-tx)*.13; ty+=(my-ty)*.13;
+  c2.style.left=tx+'px'; c2.style.top=ty+'px';
+},16);
+
+// Cursor expand on interactive elements
+document.querySelectorAll('a,button,.q-card,.hall-card,textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>c2.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>c2.classList.remove('hovering'));
+});
+
+// ===== FLOATING PETAL CANVAS (fixed background) =====
+const pc=document.getElementById('petalCanvas');
+const pctx=pc.getContext('2d');
+function rpResize(){ pc.width=window.innerWidth; pc.height=window.innerHeight; }
+rpResize(); window.addEventListener('resize',rpResize);
+
+const petals=[];
+const petalColors=['rgba(242,196,206,','rgba(247,221,226,','rgba(232,201,160,','rgba(212,132,154,'];
+for(let i=0;i<55;i++){
+  petals.push({
+    x:Math.random()*window.innerWidth,
+    y:Math.random()*window.innerHeight*2 - window.innerHeight,
+    size:Math.random()*10+5,
+    speedY:Math.random()*0.6+0.3,
+    speedX:Math.sin(Math.random()*Math.PI)*0.4,
+    rot:Math.random()*Math.PI*2,
+    rotSpeed:(Math.random()-.5)*.02,
+    alpha:Math.random()*.5+.15,
+    color:petalColors[Math.floor(Math.random()*petalColors.length)]
+  });
+}
+
+function drawPetal(x,y,size,rot,alpha,color){
+  pctx.save();
+  pctx.translate(x,y); pctx.rotate(rot);
+  pctx.beginPath();
+  pctx.moveTo(0,-size);
+  pctx.bezierCurveTo(size*0.7,-size*0.5, size*0.7,size*0.5, 0,size);
+  pctx.bezierCurveTo(-size*0.7,size*0.5, -size*0.7,-size*0.5, 0,-size);
+  pctx.fillStyle=color+alpha+')';
+  pctx.fill();
+  pctx.restore();
+}
+
+function animPetals(){
+  pctx.clearRect(0,0,pc.width,pc.height);
+  petals.forEach(p=>{
+    p.y+=p.speedY; p.x+=p.speedX+Math.sin(Date.now()*.001+p.rot)*.3;
+    p.rot+=p.rotSpeed;
+    if(p.y>window.innerHeight+30){ p.y=-30; p.x=Math.random()*window.innerWidth; }
+    drawPetal(p.x,p.y,p.size,p.rot,p.alpha,p.color);
+  });
+  requestAnimationFrame(animPetals);
+}
+animPetals();
+
+// ===== UNIVERSE 4D CANVAS =====
+const uc=document.getElementById('universeCanvas');
+const uctx=uc.getContext('2d');
+let UW,UH,umx=.5,umy=.5,uTime=0;
+
+function uResize(){
+  UW=uc.width=uc.offsetWidth;
+  UH=uc.height=uc.offsetHeight;
+}
+uResize(); window.addEventListener('resize',uResize);
+
+// Stars in universe — more stars, warmer pink hues
+const uStars=[];
+for(let i=0;i<650;i++){
+  uStars.push({
+    x:(Math.random()-.5)*2, y:(Math.random()-.5)*2,
+    z:Math.random(),
+    r:Math.random()*2.2+.3,
+    hue: Math.random()<.45 ? 340 : Math.random()<.55 ? 15 : 310,
+    sat: 55+Math.random()*30,
+    spd:Math.random()*.005+.0008,
+    trail:[],
+    twinkle: Math.random()*Math.PI*2,
+  });
+}
+
+const blooms=[];
+function addBloom(px,py){
+  const petCount=45;
+  for(let i=0;i<petCount;i++){
+    const angle=Math.PI*2*(i/petCount)+Math.random()*.3;
+    const spd=Math.random()*4+1.5;
+    blooms.push({
+      x:px, y:py,
+      vx:Math.cos(angle)*spd,
+      vy:Math.sin(angle)*spd,
+      r:Math.random()*5+2,
+      life:1,
+      decay:Math.random()*.02+.012,
+      hue: 330+Math.random()*50,
+      sat:65+Math.random()*20,
+    });
+  }
+  // Central burst ring
+  for(let i=0;i<6;i++){
+    blooms.push({
+      x:px,y:py,vx:0,vy:0,
+      r:3+i*8,life:.6,decay:.03,hue:340,sat:50,ring:true,ringR:3+i*8,
+    });
+  }
+}
+
+uc.addEventListener('mousemove',e=>{
+  const r=uc.getBoundingClientRect();
+  umx=(e.clientX-r.left)/UW;
+  umy=(e.clientY-r.top)/UH;
+});
+uc.addEventListener('click',e=>{
+  const r=uc.getBoundingClientRect();
+  addBloom(e.clientX-r.left, e.clientY-r.top);
+});
+uc.addEventListener('touchstart',e=>{
+  const r=uc.getBoundingClientRect();
+  const t=e.touches[0];
+  addBloom(t.clientX-r.left, t.clientY-r.top);
+},{passive:true});
+
+function drawUniverse(){
+  uctx.fillStyle='rgba(28,14,23,0.18)';
+  uctx.fillRect(0,0,UW,UH);
+  uTime+=.01;
+
+  const cx=UW/2+(umx-.5)*100;
+  const cy=UH/2+(umy-.5)*70;
+
+  uStars.forEach(s=>{
+    s.z+=s.spd;
+    s.twinkle+=.04;
+    if(s.z>1){s.z=0;s.trail=[];}
+    const persp=1/(1-s.z*.9);
+    const sx=cx+s.x*UW*.46*persp;
+    const sy=cy+s.y*UH*.46*persp;
+    const sr=s.r*persp*(1+Math.sin(s.twinkle)*.12);
+
+    s.trail.push({x:sx,y:sy});
+    if(s.trail.length>18)s.trail.shift();
+
+    if(s.trail.length>2){
+      uctx.beginPath();
+      uctx.moveTo(s.trail[0].x,s.trail[0].y);
+      s.trail.forEach(p=>uctx.lineTo(p.x,p.y));
+      uctx.strokeStyle=`hsla(${s.hue},${s.sat}%,80%,${.1*s.z})`;
+      uctx.lineWidth=sr*.35;
+      uctx.stroke();
+    }
+
+    const alpha=Math.min(1,s.z*2.2);
+    uctx.beginPath();
+    uctx.arc(sx,sy,Math.max(.1,sr),0,Math.PI*2);
+    uctx.fillStyle=`hsla(${s.hue+Math.sin(uTime+s.x)*12},${s.sat}%,85%,${alpha})`;
+    uctx.fill();
+
+    if(sr>1.4){
+      const g=uctx.createRadialGradient(sx,sy,0,sx,sy,sr*6);
+      g.addColorStop(0,`hsla(${s.hue},${s.sat}%,88%,.35)`);
+      g.addColorStop(1,'transparent');
+      uctx.beginPath();
+      uctx.arc(sx,sy,sr*6,0,Math.PI*2);
+      uctx.fillStyle=g; uctx.fill();
+    }
+  });
+
+  // Blooms
+  for(let i=blooms.length-1;i>=0;i--){
+    const b=blooms[i];
+    b.life-=b.decay;
+    if(b.life<=0){blooms.splice(i,1);continue;}
+
+    if(b.ring){
+      uctx.beginPath();
+      uctx.arc(b.x,b.y,b.ringR*(1+(1-b.life)*.8),0,Math.PI*2);
+      uctx.strokeStyle=`hsla(${b.hue},${b.sat}%,80%,${b.life*.5})`;
+      uctx.lineWidth=1.5;
+      uctx.stroke();
+      continue;
+    }
+
+    b.x+=b.vx; b.y+=b.vy;
+    b.vx*=.91; b.vy*=.91;
+
+    uctx.beginPath();
+    uctx.arc(b.x,b.y,b.r*b.life,0,Math.PI*2);
+    uctx.fillStyle=`hsla(${b.hue},${b.sat}%,82%,${b.life*.85})`;
+    uctx.fill();
+
+    const g2=uctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r*5*b.life);
+    g2.addColorStop(0,`hsla(${b.hue},${b.sat}%,80%,${b.life*.35})`);
+    g2.addColorStop(1,'transparent');
+    uctx.beginPath();
+    uctx.arc(b.x,b.y,b.r*5*b.life,0,Math.PI*2);
+    uctx.fillStyle=g2; uctx.fill();
+  }
+
+  requestAnimationFrame(drawUniverse);
+}
+drawUniverse();
+
+// ===== TILT CARDS =====
+document.querySelectorAll('.q-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)/r.width;
+    const y=(e.clientY-r.top-r.height/2)/r.height;
+    card.style.transform=`perspective(700px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateY(-8px)`;
+  });
+  card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+});
+
+// ===== SCROLL REVEAL =====
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ===== CATEGORY PILLS =====
+let activeCat='feelings';
+document.getElementById('catPills').addEventListener('click',e=>{
+  const pill=e.target.closest('.cat-pill');
+  if(!pill)return;
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
+  pill.classList.add('active');
+  activeCat=pill.dataset.cat;
+});
+
+// ===== ANONYMOUS REPORT =====
+const catLabels={feelings:'💭 Personal Feelings',relationship:'🌹 Relationships',venting:'🌊 Just Venting',other:'🌸 Something Else'};
+const catColors={feelings:'rgba(212,132,154,.35)',relationship:'rgba(181,122,138,.35)',venting:'rgba(145,98,120,.35)',other:'rgba(180,140,155,.35)'};
+
+const wall=document.getElementById('reportsWall');
+
+// Wall starts empty — users fill it themselves
+function renderCard(report){
+  const card=document.createElement('div');
+  card.className='report-card';
+  card.innerHTML=`
+    <div class="report-meta">
+      <span class="report-anon">anonymous</span>
+      <span class="report-cat-badge">${catLabels[report.cat]}</span>
+      <span class="report-time">just now</span>
+    </div>
+    <div class="report-text">"${report.text}"</div>`;
+  wall.insertBefore(card,wall.firstChild);
+}
+
+function submitReport(){
+  const val=document.getElementById('anonText').value.trim();
+  if(!val)return;
+  // remove empty state if present
+  const empty=wall.querySelector('.wall-empty');
+  if(empty)empty.remove();
+  renderCard({cat:activeCat,text:val});
+  document.getElementById('anonText').value='';
+  wall.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+document.getElementById('anonText').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.ctrlKey){submitReport();}
+});
+
+// ===== NAME SHIMMER =====
+const nameEl=document.getElementById('heroName');
+nameEl.addEventListener('mouseover',()=>{
+  nameEl.style.background='linear-gradient(135deg, var(--wine), var(--rose), var(--gold), var(--wine))';
+  nameEl.style.backgroundSize='200% auto';
+  nameEl.style.webkitBackgroundClip='text';
+  nameEl.style.webkitTextFillColor='transparent';
+  nameEl.style.backgroundClip='text';
+  nameEl.style.animation='shimmer 1.5s linear infinite';
+});
+nameEl.addEventListener('mouseleave',()=>{
+  nameEl.style.background='';
+  nameEl.style.webkitTextFillColor='';
+  nameEl.style.animation='';
+});
+
+
+// ===== MOUSE TRAIL SPARKS =====
+const sparkColors=['rgba(212,132,154,','rgba(232,201,160,','rgba(247,221,226,','rgba(181,122,138,'];
+let lastSpark=0;
+document.addEventListener('mousemove',e=>{
+  const now=Date.now();
+  if(now-lastSpark<40)return;
+  lastSpark=now;
+  const sp=document.createElement('div');
+  sp.className='spark';
+  const size=Math.random()*5+2;
+  const col=sparkColors[Math.floor(Math.random()*sparkColors.length)];
+  sp.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:${col}${Math.random()*.5+.3})`;
+  document.body.appendChild(sp);
+  setTimeout(()=>sp.remove(),800);
+});
+
+// ===== CLICK RIPPLE =====
+document.addEventListener('click',e=>{
+  if(e.target.closest('button')||e.target.closest('textarea'))return;
+  const r=document.createElement('div');
+  r.className='soft-ripple';
+  r.style.left=e.clientX+'px';
+  r.style.top=e.clientY+'px';
+  document.body.appendChild(r);
+  setTimeout(()=>r.remove(),1000);
+});
+
+// ===== PARALLAX ORBS =====
+const orbs=document.querySelectorAll('.orb');
+document.addEventListener('mousemove',e=>{
+  const xRatio=(e.clientX/window.innerWidth-.5);
+  const yRatio=(e.clientY/window.innerHeight-.5);
+  orbs.forEach((o,i)=>{
+    const depth=(i+1)*8;
+    o.style.transform=`translate(${xRatio*depth}px,${yRatio*depth}px)`;
+  });
+});
+
+// ===== CINEMATIC SCROLL PROGRESS =====
+const cineL=document.querySelector('.cine-line.left');
+const cineR=document.querySelector('.cine-line.right');
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+  const glow=`linear-gradient(to bottom, transparent 0%, rgba(212,132,154,${.04+pct*.12}) ${pct*40}%, rgba(212,132,154,${.1+pct*.1}) ${pct*80}%, transparent 100%)`;
+  cineL.style.background=glow;
+  cineR.style.background=glow;
+});
+
+// ===== SOFT TEXT GLITCH on "Premi" (gentle, dreamy) =====
+const softChars='premi∙✦◌○●◦';
+let glitchT;
+function softGlitch(){
+  let iter=0;
+  clearInterval(glitchT);
+  glitchT=setInterval(()=>{
+    nameEl.textContent='Premi'.split('').map((c,i)=>{
+      if(i<iter)return 'Premi'[i];
+      return softChars[Math.floor(Math.random()*softChars.length)];
+    }).join('');
+    if(iter>=5){clearInterval(glitchT);nameEl.textContent='Premi';}
+    iter+=.18;
+  },55);
+}
+setTimeout(softGlitch,2200);
+setInterval(softGlitch,9000);
+</script>
+</body>
+</html>
